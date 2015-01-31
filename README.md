@@ -1,13 +1,16 @@
 UglifyJS 2
 ==========
-[![Build Status](https://travis-ci.org/mishoo/UglifyJS2.svg)](https://travis-ci.org/mishoo/UglifyJS2)
 
 UglifyJS is a JavaScript parser, minifier, compressor or beautifier toolkit.
 
+This is a fork of mishoo's UglifyJS to add an option to generate unique variable/label names
+when beautifying. This makes it easier to search-and-replace-all the names when trying to
+understand the codes.
+
 This page documents the command line utility.  For
-[API and internals documentation see my website](http://lisperator.net/uglifyjs/).
+[API and internals documentation see mishoo's website](http://lisperator.net/uglifyjs/).
 There's also an
-[in-browser online demo](http://lisperator.net/uglifyjs/#demo) (for Firefox,
+[in-browser online demo of the original UglifyJS 2](http://lisperator.net/uglifyjs/#demo) (for Firefox,
 Chrome and probably Safari).
 
 Install
@@ -78,6 +81,8 @@ The available options are:
                      source map and the output file.                    [string]
   -o, --output       Output file (default STDOUT).
   -b, --beautify     Beautify output/specify output options.            [string]
+  -u, --unique       Generate unique variable/label names
+                     when used with 'beautify'.                        [boolean]
   -m, --mangle       Mangle names/pass mangler options.                 [string]
   -r, --reserved     Reserved names to exclude from mangling.
   -c, --compress     Enable compressor/pass compressor options. Pass options

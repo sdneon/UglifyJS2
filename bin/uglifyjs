@@ -79,6 +79,7 @@ You need to pass an argument to this option to specify the name that your module
     .alias("V", "version")
     .alias("e", "enclose")
     .alias("q", "quotes")
+    .alias("u", "unique")   //SD: Add support for generating unique variable/label names when beautifying
 
     .string("source-map")
     .string("source-map-root")
@@ -106,6 +107,7 @@ You need to pass an argument to this option to specify the name that your module
     .boolean("noerr")
     .boolean("bare-returns")
     .boolean("keep-fnames")
+    .boolean("u")   //SD: Add support for generating unique variable/label names when beautifying
 
     .wrap(80)
 
@@ -144,6 +146,19 @@ if (ARGS.acorn) {
 var COMPRESS = getOptions("c", true);
 var MANGLE = getOptions("m", true);
 var BEAUTIFY = getOptions("b", true);
+//SD: Add support for generating unique variable/label names when beautifying
+if (getOptions("u", true))
+{
+    if (MANGLE)
+    {
+        MANGLE.unique = true;
+        MANGLE.uname = -1;
+    }
+    else
+    {
+        MANGLE = { unique: true, uname: -1 };
+    }
+}
 
 if (ARGS.d) {
     if (COMPRESS) COMPRESS.global_defs = getOptions("d");
